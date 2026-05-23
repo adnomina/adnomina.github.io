@@ -6,7 +6,8 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://blog.adnomina.dev',
+	site: "https://adnomina.github.io",
+	base: "/blog",
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{
