@@ -1,4 +1,4 @@
-This repo contains the code for my blog based on [Astro](https://astro.build/).
+This repo contains the code for my website based on [Astro](https://astro.build/).
 
 ## Project Structure
 
