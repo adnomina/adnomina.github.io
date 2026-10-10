@@ -28,5 +28,12 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": ">= 12.9.1",
+      "onFail": "download"
+    }
   }
 }
