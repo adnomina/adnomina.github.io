@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import Header from "../../components/Header.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import Footer from "../../components/Footer.astro";
+import "../../styles/collection.css";
+
+const chips = (await getCollection("chips")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <section>
+        <ul>
+          {chips.map((chip) => (
+            <li>
+              <a href={`/chips/${chip.id}/`}>
+                <h4 class="title">{chip.data.title}</h4>
+                <p class="date">
+                  <FormattedDate date={chip.data.pubDate} />
+                </p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>

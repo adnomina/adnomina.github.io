@@ -1,0 +1,20 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import Post from "../../layouts/Post.astro";
+
+export async function getStaticPaths() {
+  const chips = await getCollection("chips");
+  return chips.map((chip) => ({
+    params: { slug: chip.id },
+    props: chip,
+  }));
+}
+type Props = CollectionEntry<"chips">;
+
+const chip = Astro.props;
+const { Content } = await render(chip);
+---
+
+<Post {...chip.data}>
+  <Content />
+</Post>

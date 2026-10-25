@@ -6,6 +6,7 @@ import Footer from "../../components/Footer.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
 import Header from "../../components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import "../../styles/collection.css";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -16,71 +17,6 @@ const posts = (await getCollection("blog")).sort(
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <style>
-      main {
-        width: 960px;
-      }
-
-      ul {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      ul li * {
-        text-decoration: none;
-        transition: 0.2s ease;
-      }
-
-      ul li img {
-        margin-bottom: 0.5rem;
-        border-radius: 12px;
-      }
-
-      ul li a {
-        display: block;
-      }
-
-      .title {
-        margin: 0;
-        color: var(--black);
-        line-height: 1;
-      }
-
-      .date {
-        margin: 0;
-        color: var(--gray);
-      }
-
-      ul li a:hover h4,
-      ul li a:hover .date {
-        color: var(--secondary);
-      }
-
-      ul a:hover img {
-        box-shadow: var(--box-shadow);
-      }
-
-      @media (max-width: 720px) {
-        ul {
-          gap: 0.5em;
-        }
-        ul li {
-          width: 100%;
-          text-align: center;
-        }
-      }
-
-      @media (prefers-color-scheme: dark) {
-        .title,
-        .date {
-          color: var(--white);
-        }
-      }
-    </style>
   </head>
   <body>
     <Header />
